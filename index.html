@@ -3,194 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>روابط حساباتي</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+    <title>صفحة الشعار - هوية بصرية</title>
     <style>
+        /* إعدادات الألوان والخطوط */
         :root {
             --bg-color: #000000;
-            --card-bg: #111111;
-            --gold: #f1c40f;
-            --white: #ffffff;
-            --text-gray: #aaaaaa;
+            --primary-gold: #f1c40f;
+            --secondary-white: #ffffff;
+            --text-gray: #888;
         }
 
-        * {
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent; /* إزالة لون التحديد عند اللمس في الجوال */
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--white);
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        body, html {
             margin: 0;
             padding: 0;
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--secondary-white);
+            overflow: hidden;
             display: flex;
             justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
-        }
-
-        /* حاوية الصفحة الرئيسية */
-        .wrapper {
-            width: 100%;
-            max-width: 480px; /* العرض المثالي للجوال */
-            padding: 40px 20px;
-            display: flex;
-            flex-direction: column;
             align-items: center;
         }
 
-        /* تصميم الهيدر والشعار */
-        .profile-section {
+        /* حاوية الشعار المتحركة */
+        .container {
             text-align: center;
-            margin-bottom: 35px;
+            animation: fadeIn 2s ease-in-out;
         }
 
-        .logo-container {
-            width: 110px;
-            height: 110px;
-            margin: 0 auto 15px;
+        .logo-wrapper {
             position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto 30px;
+            border: 2px solid var(--secondary-white);
+            transform: rotate(45deg); /* لمحاكاة الشكل الماسي في الخلفية */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.5s ease;
         }
 
-        .logo-container img {
+        .logo-wrapper:hover {
+            border-color: var(--primary-gold);
+            transform: rotate(45deg) scale(1.05);
+        }
+
+        .logo-img {
+            transform: rotate(-45deg); /* لإعادة الشعار لوضعه الطبيعي */
+            width: 90%;
+            height: auto;
+            filter: drop-shadow(0 0 10px rgba(241, 196, 15, 0.3));
+        }
+
+        /* النصوص */
+        h1 {
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            color: var(--secondary-white);
+        }
+
+        h1 span {
+            color: var(--primary-gold);
+        }
+
+        p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            max-width: 400px;
+            margin: 0 auto 30px;
+        }
+
+        /* أزرار التفاعل */
+        .btn {
+            display: inline-block;
+            padding: 12px 35px;
+            border: 1px solid var(--primary-gold);
+            color: var(--primary-gold);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-gold);
+            color: #000;
+        }
+
+        /* حركات فنية */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* تأثير الدخان أو الوهج في الخلفية */
+        .glow {
+            position: absolute;
             width: 100%;
             height: 100%;
-            border: 2px solid var(--gold);
-            padding: 5px;
-            background: var(--card-bg);
-            /* حركة دوران بسيطة تعطي لمسة فنية */
-            transform: rotate(45deg);
-            transition: 0.5s ease;
-        }
-
-        .logo-container:hover img {
-            transform: rotate(0deg);
-        }
-
-        h1 {
-            font-size: 1.4rem;
-            margin: 10px 0 5px;
-            letter-spacing: 1px;
-        }
-
-        .bio {
-            font-size: 0.9rem;
-            color: var(--text-gray);
-            margin: 0;
-        }
-
-        /* قائمة الروابط */
-        .links-list {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .link-item {
-            background-color: var(--card-bg);
-            color: var(--white);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 16px 20px;
-            border-radius: 12px; /* زوايا مستديرة عصرية */
-            border: 1px solid #222;
-            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        /* تأثير عند اللمس/النقر */
-        .link-item:active {
-            transform: scale(0.96);
-            background-color: #1a1a1a;
-        }
-
-        /* تأثير عند التمرير بالماوس (لأجهزة الكمبيوتر) */
-        @media (min-width: 768px) {
-            .link-item:hover {
-                border-color: var(--gold);
-                padding-right: 30px; /* حركة بسيطة للنص */
-            }
-        }
-
-        .link-item i {
-            font-size: 1.2rem;
-            color: var(--gold);
-        }
-
-        .link-text {
-            flex-grow: 1;
-            text-align: center;
-            font-weight: 500;
-        }
-
-        /* زر التواصل المميز */
-        .contact-special {
-            margin-top: 10px;
-            background: linear-gradient(45deg, var(--gold), #d4ac0d);
-            color: black;
-            border: none;
-        }
-
-        .contact-special .link-text {
-            font-weight: bold;
-        }
-
-        .contact-special i {
-            color: black;
-        }
-
-        /* الفوتر */
-        footer {
-            margin-top: 50px;
-            font-size: 0.75rem;
-            color: #444;
+            background: radial-gradient(circle, rgba(241, 196, 15, 0.05) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1;
         }
     </style>
 </head>
 <body>
 
-    <div class="wrapper">
-        <div class="profile-section">
-            <div class="logo-container">
-                <img src="1000354240.png" alt="Logo">
-            </div>
-            <h1>هويتي البصرية</h1>
-            <p class="bio">مصمم جرافيك | متخصص في الخط العربي</p>
+    <div class="glow"></div>
+
+    <div class="container">
+        <div class="logo-wrapper">
+            <img src="1000354240.png" alt="الشعار" class="logo-img">
         </div>
 
-        <div class="links-list">
-            <a href="https://instagram.com/YourUser" class="link-item">
-                <i class="fab fa-instagram"></i>
-                <span class="link-text">إنستغرام</span>
-                <i class="fa-solid fa-chevron-left" style="font-size: 0.8rem; opacity: 0.3;"></i>
-            </a>
-
-            <a href="https://twitter.com/YourUser" class="link-item">
-                <i class="fab fa-x-twitter"></i>
-                <span class="link-text">تويتر (X)</span>
-                <i class="fa-solid fa-chevron-left" style="font-size: 0.8rem; opacity: 0.3;"></i>
-            </a>
-
-            <a href="https://behance.net/YourUser" class="link-item">
-                <i class="fab fa-behance"></i>
-                <span class="link-text">معرض أعمالي</span>
-                <i class="fa-solid fa-chevron-left" style="font-size: 0.8rem; opacity: 0.3;"></i>
-            </a>
-
-            <a href="https://wa.me/YourNumber" class="link-item contact-special">
-                <i class="fab fa-whatsapp"></i>
-                <span class="link-text">تواصل مباشر</span>
-                <span></span> </a>
-        </div>
-
-        <footer>
-            &copy; 2024 جميع الحقوق محفوظة
-        </footer>
+        <h1>الفخامة <span>العربية</span></h1>
+        <p>مزيج من الخط العربي الأصيل والهندسة المعاصرة في قالب فني فريد.</p>
+        
+        <a href="#" class="btn">اكتشف المزيد</a>
     </div>
 
 </body>
