@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>روابط حساباتي</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #000000;
+            --card-bg: #111111;
+            --gold: #f1c40f;
+            --white: #ffffff;
+            --text-gray: #aaaaaa;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent; /* إزالة لون التحديد عند اللمس في الجوال */
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--white);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        /* حاوية الصفحة الرئيسية */
+        .wrapper {
+            width: 100%;
+            max-width: 480px; /* العرض المثالي للجوال */
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* تصميم الهيدر والشعار */
+        .profile-section {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .logo-container {
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 15px;
+            position: relative;
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--gold);
+            padding: 5px;
+            background: var(--card-bg);
+            /* حركة دوران بسيطة تعطي لمسة فنية */
+            transform: rotate(45deg);
+            transition: 0.5s ease;
+        }
+
+        .logo-container:hover img {
+            transform: rotate(0deg);
+        }
+
+        h1 {
+            font-size: 1.4rem;
+            margin: 10px 0 5px;
+            letter-spacing: 1px;
+        }
+
+        .bio {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin: 0;
+        }
+
+        /* قائمة الروابط */
+        .links-list {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .link-item {
+            background-color: var(--card-bg);
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            border-radius: 12px; /* زوايا مستديرة عصرية */
+            border: 1px solid #222;
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* تأثير عند اللمس/النقر */
+        .link-item:active {
+            transform: scale(0.96);
+            background-color: #1a1a1a;
+        }
+
+        /* تأثير عند التمرير بالماوس (لأجهزة الكمبيوتر) */
+        @media (min-width: 768px) {
+            .link-item:hover {
+                border-color: var(--gold);
+                padding-right: 30px; /* حركة بسيطة للنص */
+            }
+        }
+
+        .link-item i {
+            font-size: 1.2rem;
+            color: var(--gold);
+        }
+
+        .link-text {
+            flex-grow: 1;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        /* زر التواصل المميز */
+        .contact-special {
+            margin-top: 10px;
+            background: linear-gradient(45deg, var(--gold), #d4ac0d);
+            color: black;
+            border: none;
+        }
+
+        .contact-special .link-text {
+            font-weight: bold;
+        }
+
+        .contact-special i {
+            color: black;
+        }
+
+        /* الفوتر */
+        footer {
+            margin-top: 50px;
+            font-size: 0.75rem;
+            color: #444;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="profile-section">
+            <div class="logo-container">
+                <img src="1000354240.png" alt="Logo">
+            </div>
+            <h1>هويتي البصرية</h1>
+            <p class="bio">مصمم جرافيك | متخصص في الخط العربي</p>
+        </div>
+
+        <div class="links-list">
+            <a href="https://instagram.com/YourUser" class="link-item">
+                <i class="fab fa-instagram"></i>
+                <span class="link-text">إنستغرام</span>
+                <i class="fa-solid fa-chevron-left" style="font-size: 0.8rem; opacity: 0.3;"></i>
+            </a>
+
+            <a href="https://twitter.com/YourUser" class="link-item">
+                <i class="fab fa-x-twitter"></i>
+                <span class="link-text">تويتر (X)</span>
+                <i class="fa-solid fa-chevron-left" style="font-size: 0.8rem; opacity: 0.3;"></i>
+            </a>
+
+            <a href="https://behance.net/YourUser" class="link-item">
+                <i class="fab fa-behance"></i>
+                <span class="link-text">معرض أعمالي</span>
+                <i class="fa-solid fa-chevron-left" style="font-size: 0.8rem; opacity: 0.3;"></i>
+            </a>
+
+            <a href="https://wa.me/YourNumber" class="link-item contact-special">
+                <i class="fab fa-whatsapp"></i>
+                <span class="link-text">تواصل مباشر</span>
+                <span></span> </a>
+        </div>
+
+        <footer>
+            &copy; 2024 جميع الحقوق محفوظة
+        </footer>
+    </div>
+
+</body>
+</html>
